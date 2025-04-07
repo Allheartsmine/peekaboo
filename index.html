@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Gift Box</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f0f8ff; /* Light blue for a calming background */
+      font-family: Arial, sans-serif;
+    }
+
+    #gift-box {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      background: #ff6f61; /* Festive red */
+      border-radius: 15px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    #gift-box:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    #gift-box::before, #gift-box::after {
+      content: '';
+      position: absolute;
+      background: #ffc107; /* Golden ribbon */
+    }
+
+    /* Vertical ribbon */
+    #gift-box::before {
+      width: 20px;
+      height: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Horizontal ribbon */
+    #gift-box::after {
+      width: 100%;
+      height: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .bow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70px;
+      height: 50px;
+      background: #ff0000; /* Red bow color */
+      clip-path: polygon(50% 0%, 75% 25%, 100% 50%, 75% 75%, 50% 100%, 25% 75%, 0% 50%, 25% 25%);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #bunny {
+      display: none;
+      width: 300px;
+      height: auto;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    #message {
+      margin-bottom: 20px;
+      font-size: 20px;
+      color: #333;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="message">Open for surprise</div>
+  <div id="gift-box" onclick="unwrapGift()">
+    <div class="bow"></div>
+  </div>
+  <img id="bunny" src="http://s.myniceprofile.com/myspacepic/943/94361.gif" alt="Animated Bunny Plushy">
+
+  <script>
+    function unwrapGift() {
+      document.getElementById('gift-box').style.display = 'none';
+      document.getElementById('bunny').style.display = 'block';
+      document.getElementById('message').innerText = "SURPRISE ITS ME";
+    }
+  </script>
+</body>
+</html>
